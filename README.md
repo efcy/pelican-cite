@@ -1,16 +1,7 @@
 pelican-cite
 ==============
 
-Allows the use of BibTeX citations within a Pelican site. 
-
-Requirements
-============
-
-`pelican-cite` requires `pybtex`.
-
-```bash
-pip install pybtex
-```
+Allows the use of BibTeX citations within a Pelican site.
 
 How to Use
 ==========
@@ -29,7 +20,7 @@ to citation keys. These take the format `[@Bai2011]` or `[@@Bai2011]`. These
 will be replaced by incline citations which provide links to the full
 bibliographic information at the end of the article. The former reference would
 be replaced by a citation of the form "Bai & Stone (2011)", while the latter
-would be replaced by "(Bai & Stone, 2011)". 
+would be replaced by "(Bai & Stone, 2011)".
 
 If a citation key is used which does not exist within the BibTeX file then
 a warning will be displayed.
@@ -41,4 +32,6 @@ Attribution
 ===========
 `pelican-cite` is based on the
 [pelican-bibtex](https://github.com/vene/pelican-bibtex) plugin written by
-[Vlad Niculae](https://github.com/vene).
+[Vlad Niculae](https://github.com/vene)
+and [pelican-cite](https://github.com/cmacmackin/pelican-cite) written by
+[Chris MacMackin](https://github.com/cmacmackin).
