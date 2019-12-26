@@ -332,6 +332,19 @@ latexcodec = ">=1.0.4"
 six = "*"
 
 [[package]]
+category = "main"
+description = "Defines an author-year inline citation style for Pybtex."
+name = "pybtex-author-year-label"
+optional = false
+python-versions = ">=3.6,<4.0"
+version = "0.1.1"
+
+[package.dependencies]
+markdown = ">=3.1.1,<4.0.0"
+pelican = ">=4.2,<5.0"
+pybtex = ">=0.22.2,<0.23.0"
+
+[[package]]
 category = "dev"
 description = "Python style guide checker"
 name = "pycodestyle"
@@ -551,7 +564,7 @@ testing = ["pathlib2", "contextlib2", "unittest2"]
 markdown = ["markdown"]
 
 [metadata]
-content-hash = "3749d010c72ac41e042e69e77e6d8b221e6b36473671d6ea4db7f27eb538753c"
+content-hash = "8c899477c8792715278401a3510ac873944e919d34b2713981612839ef90515c"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -723,6 +736,10 @@ py = [
 pybtex = [
     {file = "pybtex-0.22.2-py2.py3-none-any.whl", hash = "sha256:9ce2ce13d8d4f5a8d3848463f58167dbbbe75a53511f1088eaa6197637cdf8cf"},
     {file = "pybtex-0.22.2.tar.gz", hash = "sha256:00816e5f8570609d8ce3360cd23916bd3e50428a3508127578fdb4dc2b731c1c"},
+]
+pybtex-author-year-label = [
+    {file = "pybtex-author-year-label-0.1.1.tar.gz", hash = "sha256:bd3292a1bef9f31c0cf81ba93317386e939399a181fb923660fff6263e743edb"},
+    {file = "pybtex_author_year_label-0.1.1-py3-none-any.whl", hash = "sha256:1600fcad6b088490a24c90ff104aa803aee0ce24c35e298b7f01afb4b21cf1b4"},
 ]
 pycodestyle = [
     {file = "pycodestyle-2.5.0-py2.py3-none-any.whl", hash = "sha256:95a2219d12372f05704562a14ec30bc76b05a5b297b21a5dfe3f6fac3491ae56"},

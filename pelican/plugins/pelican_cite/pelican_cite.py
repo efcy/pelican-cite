@@ -8,10 +8,11 @@ pelican sites.
 
 Based on teh Pelican BibTeX plugin written by Vlad Niculae <vlad@vene.ro>
 """
+from __future__ import absolute_import
 
 import logging
 import re
-from typing import List
+from typing import List, Union
 
 from pelican import signals
 from pelican.contents import Article
@@ -21,8 +22,7 @@ from pybtex.database import PybtexError
 from pybtex.database.input.bibtex import Parser
 from pybtex.plugin import find_plugin
 from pybtex.style.formatting.unsrt import Style as UnsrtStyle
-
-from .author_year import LabelStyle
+from pybtex.style.labels.author_year import LabelStyle
 
 logger = logging.getLogger(__name__)
 
@@ -182,7 +182,7 @@ def process_content(article: Article):
     article._content = content
 
 
-def add_citations(generators: List[ArticlesGenerator, PagesGenerator]):
+def add_citations(generators: List[Union[ArticlesGenerator, PagesGenerator]]):
     global global_bib
 
     if "PUBLICATIONS_SRC" in generators[0].settings:
