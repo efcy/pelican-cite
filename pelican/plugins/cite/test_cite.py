@@ -2,7 +2,7 @@ from typing import List, Match, Optional
 
 import pytest
 
-from .pelican_cite import CITE_RE
+from .cite import CITE_RE
 
 
 @pytest.mark.parametrize(
