@@ -1,0 +1,23 @@
+<div id="citations">
+    <hr>
+    <h3>Citations</h3>
+    <ol class="references">
+        {% for cite in cites %}
+            <li id="{{ cite.ref_id }}">
+                <span class="reference-text">{{ cite.rendered_entry }}</span>
+                {% for i in range(1, cite.count + 1) %}
+                    <a class="cite-backref" href="#ref-{{ cite.ref_id }}-{{ i }}"
+                       title="Jump back to reference {{ i }}">
+                        <sup>
+                            <i>
+                                <b>
+                                    {{ i }}
+                                </b>
+                            </i>
+                        </sup>
+                    </a>
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ol>
+</div>

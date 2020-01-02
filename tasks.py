@@ -4,8 +4,8 @@ from shutil import which
 
 from invoke import task
 
-PKG_NAME = "cite"
-PKG_PATH = Path(f"pelican/plugins/{PKG_NAME}")
+PKG_NAME = "pelican_cite"
+PKG_PATH = Path(f"{PKG_NAME}")
 ACTIVE_VENV = os.environ.get("VIRTUAL_ENV", None)
 VENV_HOME = Path(os.environ.get("WORKON_HOME", "~/.local/share/virtualenvs"))
 VENV_PATH = Path(ACTIVE_VENV) if ACTIVE_VENV else (VENV_HOME / PKG_NAME)
