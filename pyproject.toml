@@ -1,15 +1,12 @@
 [tool.poetry]
 name = "pelican-cite"
-version = "0.1.4"
+version = "1.0.0"
 description = "Allows the use of BibTeX citations within a Pelican site"
 authors = ["Johan Vergeer <johanvergeer@gmail.com>"]
 license = "AGPL-3.0"
 readme = "README.md"
 keywords = ["pelican", "plugin"]
 repository = "https://github.com/johanvergeer/pelican-cite"
-#packages = [
-#    { include = "pelican" }
-#]
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",
