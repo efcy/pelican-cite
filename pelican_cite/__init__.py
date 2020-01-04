@@ -187,7 +187,7 @@ def _get_global_bib(
         return Parser().parse_file(refs_file)
     except PybtexError as e:
         logger.warning(
-            "`pelican_bibtex` failed to parse file %s: %s" % (refs_file, str(e))
+            "`pelican_cite` failed to parse file %s: %s" % (refs_file, str(e))
         )
 
 
@@ -250,10 +250,16 @@ class CitationsProcessor:
         article_cites = _find_cites_in_article(article_content, bib, self.style)
         logger.info(f"cites found: {article_cites}")
 
-        article_content = _replace_cites(article_content, article_cites)
-        article_content += self.cite_html.render_bibliography(article_cites)
+        if len(article_cites) == 0:
+            return
 
-        article._content = article_content
+        _replace_cites(article_content, article_cites)
+
+        article.bibliography = dict()
+        article.bibliography["rendered"] = self.cite_html.render_bibliography(
+            article_cites
+        )
+        article.bibliography["cites"] = article_cites
 
 
 def add_citations(generators):

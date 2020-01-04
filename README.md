@@ -72,3 +72,66 @@ You can use this by installing it with `pip install pybtex-author-year-label`.
 
 Defines how the bibliography will be sorted.
 Styles included in `Pybtex` are `"author_year_title"` and `"none"`. Defaults to `"author_year_title"`
+
+### Usage in Pelican template
+
+#### Labels
+
+Labels are rendered with the `BIBLIOGRAPHY_LABEL_STYLE` settings, and you cannot set anything
+in the template.
+
+#### Bibliography
+
+##### Use out of the box template
+
+You can add the bibliography anywhere in your template.
+`pelican_cite` comes with a rendered bibliography out of the box. Simply add the following to your template:
+
+```jinja2
+{% if article.bibliograpy %}
+    {{ article.bibliography.rendered }}
+{% endif %}
+```
+
+This will use the template from `pelican_cite/templates/citations.html` to render a bibliography
+
+##### Create your own template
+
+You can also create your own template. To do this `article.bibliography` has a `cites` attribute.
+
+Attribute | Description
+---|---
+`article.bibliography.cites.cite_key` | The id you used for the citation in your `.bib` file.
+`article.bibliography.cites.ref_id` | The `cite_key`, without spaces.
+`article.bibliography.cites.rendered_entry` | A rendered string containing the citation.
+`article.bibliography.cites.count` | The number of times the entry was cited in the article.
+
+Here is a template to get you started:
+
+```jinja2
+{% if article.bibliography %}
+<div id="citations">
+    <hr>
+    <h3>Citations</h3>
+    <ol class="references">
+        {% for cite in article.bibliography.cites %}
+            <li id="{{ cite.ref_id }}">
+                <span class="reference-text">{{ cite.rendered_entry }}</span>
+                {% for i in range(1, cite.count + 1) %}
+                    <a class="cite-backref" href="#ref-{{ cite.ref_id }}-{{ i }}"
+                       title="Jump back to reference {{ i }}">
+                        <sup>
+                            <i>
+                                <b>
+                                    {{ i }}
+                                </b>
+                            </i>
+                        </sup>
+                    </a>
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ol>
+</div>
+{% endif %}
+```

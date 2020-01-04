@@ -3,6 +3,20 @@ from pelican.contents import Article
 from pelican_cite import CitationsProcessor
 
 
+def test_process_without_cites(articles_generator, get_global_bib_mock):
+    article_text = f"""
+    <h1>Something about Relativity</h1>
+    <p>There is this nothing about Relativity</p>
+    """
+    article = Article(article_text)
+    articles_generator.articles.append(article)
+
+    processor = CitationsProcessor([articles_generator])
+    processor.process()
+
+    assert hasattr(article, "bibliography") is False
+
+
 def test_process_single_cite(
     articles_generator,
     entry_relativity_theory,
@@ -19,11 +33,11 @@ def test_process_single_cite(
     processor = CitationsProcessor([articles_generator])
     processor.process()
 
-    # Bibliography should have made the content longer
-    assert len(article.content) > len(article_text)
+    bibliography = article.bibliography
 
-    soup = BeautifulSoup(article.content, "html.parser")
+    soup = BeautifulSoup(bibliography["rendered"], "html.parser")
     assert soup.find(id="citations") is not None
+    assert bibliography["cites"] is not None
 
 
 def test_process_single_cite_used_multiple_times(
@@ -43,10 +57,12 @@ def test_process_single_cite_used_multiple_times(
     processor = CitationsProcessor([articles_generator])
     processor.process()
 
-    # Bibliography should have made the content longer
-    assert len(article.content) > len(article_text)
+    bibliography = article.bibliography
 
-    soup = BeautifulSoup(article.content, "html.parser")
+    soup = BeautifulSoup(bibliography["rendered"], "html.parser")
+
+    assert bibliography["cites"] is not None
+
     citations = soup.find(id="citations")
     assert citations is not None
 
@@ -83,10 +99,10 @@ def test_process_multiple_cites_in_article(
     processor = CitationsProcessor([articles_generator])
     processor.process()
 
-    # Bibliography should have made the content longer
-    assert len(article.content) > len(article_text)
+    bibliography = article.bibliography
+    assert bibliography["cites"] is not None
 
-    soup = BeautifulSoup(article.content, "html.parser")
+    soup = BeautifulSoup(bibliography["rendered"], "html.parser")
     citations = soup.find(id="citations")
     assert citations is not None
 
