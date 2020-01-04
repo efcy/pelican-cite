@@ -33,11 +33,21 @@ def test_process_single_cite(
     processor = CitationsProcessor([articles_generator])
     processor.process()
 
+    # Article should have a bibliography attribute
     bibliography = article.bibliography
+    # Which has a "cites" attribute
+    assert bibliography["cites"] is not None
 
+    # And a "rendered" attribute
     soup = BeautifulSoup(bibliography["rendered"], "html.parser")
     assert soup.find(id="citations") is not None
-    assert bibliography["cites"] is not None
+
+    article_content_soup = BeautifulSoup(article._content, "html.parser")
+
+    # Labels should be rendered
+    labels = article_content_soup.findAll("a")
+    assert len(labels) == 1
+    assert labels[0]["id"] == "ref-einrelt-1"
 
 
 def test_process_single_cite_used_multiple_times(

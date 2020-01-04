@@ -253,8 +253,7 @@ class CitationsProcessor:
         if len(article_cites) == 0:
             return
 
-        _replace_cites(article_content, article_cites)
-
+        article._content = _replace_cites(article_content, article_cites)
         article.bibliography = dict()
         article.bibliography["rendered"] = self.cite_html.render_bibliography(
             article_cites

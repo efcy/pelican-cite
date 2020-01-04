@@ -88,7 +88,7 @@ You can add the bibliography anywhere in your template.
 `pelican_cite` comes with a rendered bibliography out of the box. Simply add the following to your template:
 
 ```jinja2
-{% if article.bibliograpy %}
+{% if article.bibliography %}
     {{ article.bibliography.rendered }}
 {% endif %}
 ```
