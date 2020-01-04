@@ -59,9 +59,9 @@ Styles included in `"Pybtex"` are `"plain"` and `"lastfirst"`. Defaults to `None
 
 Defines how the labels will be formatted in the output.
 
-~~Styles included in `Pybtex` are `"alpha"` and `"number"`. Defaults to `"alpha"`~~
+Styles included in `Pybtex` are `"alpha"` and `"number"`. Defaults to `"alpha"`
 
-> At this moment only `"author_year"` is supported!
+##### Author_year label style
 
 There is also a custom style available called `"author_year_1"` and `"author_year_2"`.
 The first will show labels like `(Author,year)`, the second will show labels like `Author (year)`
@@ -77,7 +77,7 @@ Styles included in `Pybtex` are `"author_year_title"` and `"none"`. Defaults to 
 
 #### Labels
 
-Labels are rendered with the `BIBLIOGRAPHY_LABEL_STYLE` settings, and you cannot set anything
+Labels are rendered with the `BIBLIOGRAPHY_LABEL_STYLE` setting, and you cannot set anything
 in the template.
 
 #### Bibliography
