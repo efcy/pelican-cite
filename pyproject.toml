@@ -1,12 +1,16 @@
 [tool.poetry]
-name = "pelican-cite"
-version = "1.1.1"
+name = "pelican-cite2"
+version = "1.1.5"
 description = "Allows the use of BibTeX citations within a Pelican site"
 authors = ["Johan Vergeer <johanvergeer@gmail.com>"]
 license = "AGPL-3.0"
 readme = "README.md"
 keywords = ["pelican", "plugin"]
-repository = "https://github.com/johanvergeer/pelican-cite"
+repository = "https://github.com/efcy/pelican-cite"
+
+packages = [
+    { include = "pelican/plugins/pelican_cite2", from = "." }
+]
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -16,11 +20,12 @@ classifiers = [
     "Intended Audience :: End Users/Desktop",
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
-    "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -32,13 +37,15 @@ classifiers = [
 "Tracker" = "https://github.com/johanvergeer/pelican-cite/issues"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.8"
 pelican = "^4.2"
 markdown = {version = "^3.1.1",optional = true}
-pybtex = "^0.22.2"
-jinja2 = "^2.10.3"
+pybtex = "^0.25.1"
+jinja2 = "^3.1.2"
+# Avoid PyPI/Poetry problem: https://github.com/python-poetry/poetry/issues/9293
+docutils = "!=0.21.post1"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = {version = "^19.10b0",allow-prereleases = true}
 flake8 = "^3.7"
 flake8-black = "^0.1.0"

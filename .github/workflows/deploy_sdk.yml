@@ -1,0 +1,27 @@
+name: GitHub Actions for deploying pelican-cite
+run-name: ${{ github.actor }} is deploying the pelican-cite 🚀
+on:
+  push:
+    branches: ['main']
+
+env:
+  PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip setuptools wheel twine
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - name: Deploy pelican-cite to pypi
+        run: |
+          /bin/bash package_pypi.sh
+      - run: echo "🍏 This job's status is ${{ job.status }}."

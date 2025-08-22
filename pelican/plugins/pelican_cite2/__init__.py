@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-pelican-cite
+pelican-cite2
 ==============
 
 A Pelican plugin that provides a BibTeX-style reference system within
